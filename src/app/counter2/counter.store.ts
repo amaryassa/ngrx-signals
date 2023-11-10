@@ -1,11 +1,11 @@
-import { effect, Injectable } from '@angular/core';
+import { computed, effect, Injectable } from '@angular/core';
 import {
-  selectSignal,
   signalStore,
   withHooks,
   withMethods,
-  withSignals,
+  withComputed,
   withState,
+  patchState,
 } from '@ngrx/signals';
 
 const initialState = { count: 0 };
@@ -14,26 +14,27 @@ const initialState = { count: 0 };
 export const CounterStore2 = signalStore(
   // { providedIn: 'root' },
   withState(initialState),
-  withSignals(({ count }) => ({
-    doubleCount: selectSignal(() => count() * 2),
+  withComputed(({ count }) => ({
+    doubleCount: computed(() => count() * 2),
   })),
-  withMethods(({ $update, count }) => {
-    console.log('****************************');
+
+  withMethods((state) => {
     return {
       increment: () => {
-        console.log('increment');
-        return $update({ count: count() + 1 });
+        patchState(state, { count: state.count() + 1 });
       },
-      decrement: () => $update({ count: count() - 1 }),
+      decrement: () => {
+        patchState(state, { count: state.count() - 1 });
+      },
     };
   }),
   withHooks({
-    onInit({ count }) {
-      console.log('******', count());
-      effect(() => console.log('count changed', count()));
+    onInit(state) {
+      console.log('****** init CounterStore2', state);
+      effect(() => console.log('count changed', state.count()));
     },
-    onDestroy() {
-      console.log('on destroy');
+    onDestroy(state) {
+      console.log('****** onDestroy CounterStore2', state);
     },
   })
 );

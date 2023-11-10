@@ -6,9 +6,9 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CounterStore } from './counter.store';
-import { rxMethod } from '@ngrx/signals';
 import { from, interval, of, tap } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
+// import { rxMethod } from '@ngrx/signals';
 
 @Component({
   selector: 'app-counter',
@@ -23,11 +23,11 @@ export class CounterComponent implements OnInit {
   readonly counterStore = inject(CounterStore);
 
   // rxMethod can be also used independently
-  private readonly logDoubleCount = rxMethod(
-    tap(() =>
-      console.log('double count (rxMethod):', this.counterStore.doubleCount())
-    )
-  );
+  // private readonly logDoubleCount = rxMethod(
+  //   tap(() =>
+  //     console.log('double count (rxMethod):', this.counterStore.doubleCount())
+  //   )
+  // );
   // private readonly logDoubleCountBis = toSignal(
   //   interval(2000).pipe(
   //     tap(() =>
