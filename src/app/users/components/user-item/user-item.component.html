@@ -1,0 +1,20 @@
+<div class="flex items-center" (click)="navigateToUser(user.id)">
+  <div class="flex-shrink-0">
+      <img class="w-10 h-10 rounded-full" [src]="user.image" alt="Lana image">
+  </div>
+  <div class="flex-1 min-w-0 ms-4">
+      <p class="text-sm font-medium text-gray-900 truncate">
+        {{user.firstName}} {{user.lastName}}
+      </p>
+      <p class="text-sm text-gray-500 truncate ">
+          {{user.email}}
+      </p>
+  </div>
+  <div class="inline-flex items-center text-base font-semibold text-gray-900">
+     {{user.age}}
+  </div>
+</div>
+
+
+
+
