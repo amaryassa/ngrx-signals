@@ -1,19 +1,13 @@
-import { Component, computed, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink, RouterOutlet } from '@angular/router';
-
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { NavBarComponent } from './components/ui/nav-bar/nav-bar.component';
+import { UsersComponent } from './users/pages/users.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, NavBarComponent, UsersComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  public test = signal<number>(0);
-  public result = computed(() => this.test() + 1);
-
-  change() {
-    this.test.update((value) => value + 1);
-  }
-}
+export class AppComponent {}
