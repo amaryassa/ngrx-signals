@@ -48,7 +48,6 @@ export class ManageUserComponent {
       image: `https://robohash.org/${this.formValueState().image}`,
     });
     this.store.addUser(this.formValueState);
-    this.resetForm();
   }
 
   private resetForm() {
