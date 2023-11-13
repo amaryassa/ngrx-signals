@@ -20,7 +20,7 @@ export class UseriIemComponent {
 
   constructor(
     private readonly router: Router,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
   ) {}
 
   public navigateToUser(id: number): void {

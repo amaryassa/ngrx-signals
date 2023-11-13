@@ -36,5 +36,5 @@ export const CounterStore2 = signalStore(
     onDestroy(state) {
       console.log('****** onDestroy CounterStore2', state);
     },
-  })
+  }),
 );

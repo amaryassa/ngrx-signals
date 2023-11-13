@@ -24,8 +24,8 @@ export class Counter2Component implements OnInit {
   // rxMethod can be also used independently
   private readonly logDoubleCount = rxMethod(
     tap(() =>
-      console.log('double count (rxMethod):', this.counterStore.doubleCount())
-    )
+      console.log('double count (rxMethod):', this.counterStore.doubleCount()),
+    ),
   );
   // private readonly logDoubleCountBis = toSignal(
   //   interval(2000).pipe(

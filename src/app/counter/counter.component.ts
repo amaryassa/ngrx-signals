@@ -41,9 +41,9 @@ export class CounterComponent implements OnInit {
         tap(() =>
           console.log(
             'double count (subscribe):',
-            this.counterStore.doubleCount()
-          )
-        )
+            this.counterStore.doubleCount(),
+          ),
+        ),
       )
       .subscribe();
 

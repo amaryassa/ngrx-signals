@@ -4,6 +4,7 @@ import { UsersComponent } from './users/pages/users.component';
 import { UsersWrapperComponent } from './users/users.wrapper.component';
 import { ProfileComponent } from './users/components/profile/profile.component';
 import { UserInformationComponent } from './users/pages/user-information.component';
+import { ManageUserComponent } from './users/pages/manage-user/manage-user.component';
 
 export const routes: Route[] = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -13,6 +14,7 @@ export const routes: Route[] = [
     component: UsersWrapperComponent,
     children: [
       { path: '', component: UsersComponent },
+      { path: 'new', component: ManageUserComponent },
       { path: ':id', component: UserInformationComponent },
     ],
   },

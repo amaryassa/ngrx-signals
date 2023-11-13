@@ -12,4 +12,9 @@ export class UsersService {
 
   getOneUser = (id: number) =>
     this.#httpClient.get<User>(`${URL_API}/users/${id}`);
+
+  addUser = (user: User) => {
+    console.log('########## add user', { user });
+    return this.#httpClient.post<User>(`${URL_API}/users`, user);
+  };
 }

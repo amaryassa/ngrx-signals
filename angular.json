@@ -27,10 +27,6 @@
             "styles": ["src/styles.scss"],
             "scripts": [],
             "server": "src/main.server.ts"
-            // "prerender": false,
-            // "ssr": {
-            //   "entry": "server.ts"
-            // }
           },
           "configurations": {
             "production": {
@@ -84,8 +80,17 @@
             "styles": ["src/styles.scss"],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+          }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": ["@angular-eslint/schematics"]
   }
 }

@@ -1,0 +1,68 @@
+
+
+<form
+  (formValueChange)="setFormValue($event)"
+  (ngSubmit)="onSubmit()"
+  class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+
+>
+<h1 class="text-center text-xl font-bold tracking-wider text-gray-500 m-auto mb-5">With Directive</h1>
+ @if (!!formValueState().image) {
+  <img
+  class="w-24 h-24 mb-3 rounded-full shadow-lg m-auto"
+  [src]="image()"
+
+  />
+ }
+  <input
+    [ngModel]="formValueState().firstName"
+    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-6"
+    placeholder="FirstName"
+    name="firstName"
+  />
+
+  <input
+  [ngModel]="formValueState().lastName"
+  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-6"
+  placeholder="lastName"
+  name="lastName"
+/>
+  <input
+  type="email"
+  [ngModel]="formValueState().email"
+  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-6"
+  placeholder="email"
+  name="email"
+/>
+<input
+[ngModel]="formValueState().image"
+class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-6"
+placeholder="random Image ex : jsk"
+name="image"
+/>
+  <input
+  [ngModel]="formValueState().age"
+  type="number"
+  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-6"
+  placeholder="age"
+  name="age"
+/>
+  <div class="flex items-center justify-center">
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      type="submit"
+    >
+      Save
+    </button>
+
+  </div>
+
+  <pre>{{ formValueState() | json }}</pre>
+  <button
+  (click)="UpdateFirstName()"
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    type="button"
+  >
+    update First Name
+  </button>
+</form>

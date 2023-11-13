@@ -23,9 +23,9 @@ const initialState: State = {
 export const UsersStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
-  // withComputed(({ currentUser }) => ({
+  // withComputed((store) => ({
   //   fullName: computed(
-  //     () => `${currentUser()?.firstName} ${currentUser()?.lastName} `
+  //     () => `${store.currentUser()?.firstName} ${store.currentUser()?.lastName} `
   //   ),
   // })),
   withMethods((store, usersService = inject(UsersService)) => ({
@@ -38,10 +38,10 @@ export const UsersStore = signalStore(
               next: (users) => patchState(store, { users }),
               error: console.error,
               finalize: () => patchState(store, { isLoading: false }),
-            })
-          )
-        )
-      )
+            }),
+          ),
+        ),
+      ),
     ),
     loadOneUser: rxMethod<number>(
       pipe(
@@ -52,10 +52,24 @@ export const UsersStore = signalStore(
               next: (currentUser) => patchState(store, { currentUser }),
               error: console.error,
               finalize: () => patchState(store, { isLoading: false }),
-            })
-          )
-        )
-      )
+            }),
+          ),
+        ),
+      ),
+    ),
+    addUser: rxMethod<User>(
+      pipe(
+        tap(() => patchState(store, { isLoading: true })),
+        switchMap((user) =>
+          usersService.addUser(user).pipe(
+            tapResponse({
+              next: (e) => console.log('user added', e),
+              error: console.error,
+              finalize: () => patchState(store, { isLoading: false }),
+            }),
+          ),
+        ),
+      ),
     ),
   })),
   withHooks({
@@ -66,5 +80,5 @@ export const UsersStore = signalStore(
     onDestroy(store) {
       console.log('****** onDestroy UsersStore', store);
     },
-  })
+  }),
 );
