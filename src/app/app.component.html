@@ -1,2 +1,4 @@
-<app-nav-bar></app-nav-bar>
-<router-outlet></router-outlet>
+<app-nav-bar></app-nav-bar> @if(store.loading()) {<app-loading></app-loading>}
+<main class="main">
+  <router-outlet></router-outlet>
+</main>

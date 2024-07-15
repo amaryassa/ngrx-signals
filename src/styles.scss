@@ -1,4 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+
+}
+
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem; 
+    color: #ffffff; 
+    background-color: #4299e1; 
+    border: none; 
+    border-radius: 4px; 
+    text-align: center; 
+    text-decoration: none; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+  }
+  
+  .btn:hover {
+    background-color: #3182ce; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .btn:active {
+    background-color: #2c5282; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    transform: translateY(1px); 
+  }

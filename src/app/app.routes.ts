@@ -1,21 +1,33 @@
-import { Route } from '@angular/router';
-import { Counter2Component } from './counter2/counter.component';
-import { UsersComponent } from './users/pages/users.component';
-import { UsersWrapperComponent } from './users/users.wrapper.component';
-import { ProfileComponent } from './users/components/profile/profile.component';
-import { UserInformationComponent } from './users/pages/user-information.component';
-import { ManageUserComponent } from './users/pages/manage-user/manage-user.component';
+import { Routes } from '@angular/router';
 
-export const routes: Route[] = [
-  { path: '', redirectTo: '', pathMatch: 'full' },
-  { path: 'counter2', component: Counter2Component },
+export const routes: Routes = [
   {
     path: 'users',
-    component: UsersWrapperComponent,
-    children: [
-      { path: '', component: UsersComponent },
-      { path: 'new', component: ManageUserComponent },
-      { path: ':id', component: UserInformationComponent },
-    ],
+    loadComponent: () =>
+      import('./user/user-list/user-list.component').then(
+        (m) => m.UserListComponent
+      ),
+  },
+
+  {
+    path: 'users/new',
+    loadComponent: () =>
+      import('./user/user-form/user-form.component').then(
+        (m) => m.UserFormComponent
+      ),
+  },
+  {
+    path: 'users/:id',
+    loadComponent: () =>
+      import('./user/user-details/user-details.component').then(
+        (m) => m.UserDetailsComponent
+      ),
+  },
+  {
+    path: 'users/:id/edit',
+    loadComponent: () =>
+      import('./user/user-form/user-form.component').then(
+        (m) => m.UserFormComponent
+      ),
   },
 ];

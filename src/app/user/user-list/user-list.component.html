@@ -1,0 +1,20 @@
+<div class="action">
+  <a routerLink="./new" class="btn">Add User</a>
+</div>
+
+<div class="user-list">
+  @for (user of store.users(); track user.id) {
+  <div class="user-card" [routerLink]="['.', user.id]">
+    <img
+      [src]="user.image"
+      alt="{{ user.firstName }} {{ user.lastName }}"
+      class="user-image"
+    />
+    <div class="user-details">
+      <h2>{{ user.id }} - {{ user.firstName }} {{ user.lastName }}</h2>
+      <p>Email: {{ user.email }}</p>
+      <p>Age: {{ user.age }}</p>
+    </div>
+  </div>
+  }
+</div>

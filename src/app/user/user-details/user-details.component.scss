@@ -1,0 +1,64 @@
+.user-detail-card {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  -webkit-box-reflect: below 5px linear-gradient(transparent, rgba(255, 255, 255, 0.5));
+  
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  cursor: pointer;
+  max-width: 50rem;
+  margin-inline: auto;
+  margin-top: 7rem;
+}
+
+.user-detail-card:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  background-color: #f0f0f0;
+
+}
+
+
+.user-image {
+  flex: 1;
+  max-width: 200px;
+  /* Largeur maximale de l'image */
+  overflow: hidden;
+  /* Pour gérer les images de taille différentes */
+  border-right: 1px solid #ccc;
+}
+
+.user-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.user-details {
+  flex: 2;
+  padding: 20px;
+}
+
+.user-details h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.user-details p {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.not-found {
+  margin-top: 7rem;
+  display: flex;
+  margin-top: 10rem;
+  justify-content: center;
+  align-items: center;
+}

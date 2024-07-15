@@ -1,0 +1,16 @@
+@if (store.currentUser(); as user) {
+
+<div class="user-detail-card" [routerLink]="['.', 'edit']">
+  <div class="user-image">
+    <img [src]="user.image" alt="{{ user.firstName }} {{ user.lastName }}" />
+  </div>
+  <div class="user-details">
+    <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+    <p>Email: {{ user.email }}</p>
+    <p>Age: {{ user.age }}</p>
+  </div>
+</div>
+
+}@else {
+<h1 class="not-found">Aucun utilisateur sélectionné</h1>
+}

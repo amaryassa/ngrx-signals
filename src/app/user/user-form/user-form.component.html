@@ -1,0 +1,61 @@
+<form (ngSubmit)="onSubmit()" class="custom-form">
+  <h1 class="form-title">@if (editMode()) {Edit user}@else { Add user }</h1>
+  @if(formValueState().image){
+  <div class="image-container">
+    <img class="user-image" [src]="image()" alt="User Image" />
+  </div>
+  }
+
+  <input
+    [(ngModel)]="formValueState().firstName"
+    class="form-input"
+    type="text"
+    placeholder="First Name"
+    name="firstName"
+    required
+  />
+
+  <input
+    [(ngModel)]="formValueState().lastName"
+    class="form-input"
+    type="text"
+    placeholder="Last Name"
+    name="lastName"
+    required
+  />
+
+  <input
+    [(ngModel)]="formValueState().email"
+    class="form-input"
+    type="email"
+    placeholder="Email"
+    name="email"
+    required
+  />
+
+  <input
+    [(ngModel)]="formValueState().image"
+    class="form-input"
+    type="text"
+    placeholder="Image (e.g., toto)"
+    name="image"
+  />
+
+  <input
+    [(ngModel)]="formValueState().age"
+    class="form-input"
+    type="number"
+    placeholder="Age"
+    name="age"
+    required
+  />
+
+  <div class="button-container">
+    <button class="form-button" type="submit">Save</button>
+    <button (click)="UpdateFirstName()" class="form-button" type="button">
+      Update First Name
+    </button>
+  </div>
+
+  <pre>{{ formValueState() | json }}</pre>
+</form>
